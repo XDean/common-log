@@ -1,7 +1,7 @@
 package xdean.jex.log;
 
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.lang.reflect.Method;
 
@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import javassist.ClassPool;
 import xdean.jex.log.impl.JulLog;
 import xdean.jex.log.impl.Log4jLog;
+import xdean.jex.log.impl.NoLog;
 import xdean.jex.log.impl.Slf4jLog;
 
 public class LogTest implements Logable {
@@ -44,6 +45,11 @@ public class LogTest implements Logable {
     Log log = getLogFrom(lf);
     assertTrue(log instanceof JulLog);
     testLog(log);
+  }
+
+  @Test
+  public void testNoLog() throws Exception {
+    testLog(new NoLog());
   }
 
   @Test
